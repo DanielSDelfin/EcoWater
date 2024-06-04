@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EcoWater</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EcoWater.styles.css" asp-append-version="true" />
+    <style>
+        header{
+            border-bottom: 1px solid #000000;
+
+        }
+        /* Corpo do documento */
+        body {  
+            color: #FFFFFF; /* Texto branco */
+            background-image: url('https://cdn.discordapp.com/attachments/1091182936801431586/1247540012363284520/bgweb.png?ex=666065ad&is=665f142d&hm=6a4a2a720da519de6c7a43f08c93cd83f0eb97aa0081ada0503a8b6d85ea801a&'); /* URL da imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Não repete a imagem */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #000000 !important; /* Fundo preto */
+            border-bottom: 1px solid #000000; /* Borda cinza */
+        }
+
+            .navbar .navbar-brand,
+            .navbar .nav-link {
+                color: #F8F8FF !important; /* Texto branco */
+            }
+            .navbar .nav-link:hover{
+                color: #228B22 !important; /* Texto verde ao passar o mouse */
+            }
+
+
+            .navbar .navbar-toggler {
+                color: #F8F8FF; /* Ícone branco */
+            }
+
+            .navbar .navbar-toggler-icon {
+                background-image: url("https://www.vhv.rs/dpng/d/388-3884885_hamburger-menu-icon-white-shoreline-city-church-dallas.png");
+            }
+        /* Footer */
+        .footer {
+            background-color: #000000; /* Fundo preto */
+            color: #808080; /* Texto cinza */
+            border-top: 1px solid #000000; /* Borda cinza */
+        }
+
+        /* Links */
+        a {
+            color: #808080; /* Links cinza */
+        }
+
+            a:hover {
+                color: #228B22; /* Links cinza claro ao passar o mouse */
+            }
+
+        /* Outros ajustes, se necessário */
+        .container {
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EcoWater</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Embarcacoes" asp-action="Index">Embarcações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Proprietarios" asp-action="Index">Proprietários</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - EcoWater - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
