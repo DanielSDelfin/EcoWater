@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EcoWater.Models.Monitoramentos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Monitoramento</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Embarcacoes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sensores)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel_Poluicao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Embarcacoes.Bandeira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sensores.Data_Instalacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nivel_Poluicao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Monitoramento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Monitoramento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Monitoramento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,67 @@
+﻿@model EcoWater.Models.RegistrosPoluicao
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>RegistrosPoluicao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id_Registro" class="control-label"></label>
+                <input asp-for="Id_Registro" class="form-control" />
+                <span asp-validation-for="Id_Registro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_Embarcacao" class="control-label"></label>
+                <select asp-for="Id_Embarcacao" class ="form-control" asp-items="ViewBag.Id_Embarcacao"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hora" class="control-label"></label>
+                <input asp-for="Hora" class="form-control" />
+                <span asp-validation-for="Hora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Localizacao" class="control-label"></label>
+                <input asp-for="Localizacao" class="form-control" />
+                <span asp-validation-for="Localizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_Poluicao" class="control-label"></label>
+                <input asp-for="Tipo_Poluicao" class="form-control" />
+                <span asp-validation-for="Tipo_Poluicao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantidade_Poluida" class="control-label"></label>
+                <input asp-for="Quantidade_Poluida" class="form-control" />
+                <span asp-validation-for="Quantidade_Poluida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Testemunhas" class="control-label"></label>
+                <input asp-for="Testemunhas" class="form-control" />
+                <span asp-validation-for="Testemunhas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

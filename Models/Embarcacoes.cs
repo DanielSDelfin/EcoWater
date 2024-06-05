@@ -20,7 +20,13 @@ namespace EcoWater.Models
 
         [ForeignKey("Proprietarios")]
         public int Id_Proprietario { get; set; }
-        public Proprietarios? Proprietarios { get; set; } 
+        public Proprietarios? Proprietarios { get; set; }
+
+        [InverseProperty("Embarcacoes")]
+        public ICollection<RegistrosPoluicao> RegistrosPoluicaos { get; set; } = new List<RegistrosPoluicao>();
+
+        [InverseProperty("Embarcacoes")]
+        public ICollection<Incidentes> Incidentes { get; set; } = new List<Incidentes>();
     }
 
 }

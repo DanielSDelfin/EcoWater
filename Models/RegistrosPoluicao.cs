@@ -7,9 +7,9 @@ namespace EcoWater.Models
     {
         [Key]
         public string Id_Registro { get; set; }
-        [Required]
         [ForeignKey("Embarcacoes")]
         public int Id_Embarcacao { get; set; }
+        public Embarcacoes? Embarcacoes { get; set; }
         [Required]
         public string Data { get; set; }
         [Required]

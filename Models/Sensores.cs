@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoWater.Models
 {
@@ -14,5 +15,8 @@ namespace EcoWater.Models
         public string Data_Instalacao { get; set; }
         [Required]
         public string Status { get; set; }
+
+        [InverseProperty("Sensores")]
+        public ICollection<Monitoramentos> Monitoramentos { get; set; } = new List<Monitoramentos>();
     }
 }

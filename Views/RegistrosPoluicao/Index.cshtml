@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EcoWater.Models.RegistrosPoluicao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registros de Poluição</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               @Html.DisplayNameFor(model => model.Embarcacoes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo_Poluicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade_Poluida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Testemunhas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Embarcacoes.Bandeira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_Poluicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade_Poluida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Testemunhas)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Registro">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Registro">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Registro">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

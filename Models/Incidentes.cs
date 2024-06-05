@@ -10,6 +10,7 @@ namespace EcoWater.Models
         [Required]
         [ForeignKey("Embarcacoes")]
         public int Id_Embarcacao { get; set; }
+        public Embarcacoes? Embarcacoes { get; set; }
         [Required]
         public string Data { get; set; }
         [Required]

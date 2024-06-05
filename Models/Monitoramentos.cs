@@ -7,12 +7,17 @@ namespace EcoWater.Models
     {
         [Key]
         public int Id_Monitoramento { get; set; }
+
         [Required]
         [ForeignKey("Embarcacoes")]
         public int Id_Embarcacao { get; set; }
+        public Embarcacoes? Embarcacoes { get; set; }
+
         [Required]
         [ForeignKey("Sensores")]
         public int Id_Sensor { get; set; }
+        public Sensores? Sensores { get; set; }
+
         [Required]
         public string Data { get; set; }
         [Required]
@@ -22,8 +27,5 @@ namespace EcoWater.Models
         [Required]
         public string Nivel_Poluicao { get; set; }
 
-        public Embarcacoes Embarcacoes { get; set; }
-
-        public Sensores Sensores { get; set; }
     }
 }
