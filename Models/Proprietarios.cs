@@ -1,21 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoWater.Models
 {
+    [Table("Proprietarios")]
     public class Proprietarios
     {
         [Key]
         public int Id_Proprietario { get; set; }
         [Required]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
         [Required]
-        public string Endereco { get; set; }
+        public string? Endereco { get; set; }
         [Required]
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
         [Required]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        // A propriedade Embarcacoes agora é virtual para suportar lazy loading
-        public virtual ICollection<Embarcacoes> Embarcacoes { get; set; } = new HashSet<Embarcacoes>();
+        [InverseProperty("Proprietarios")]
+        public ICollection<Embarcacoes> Embarcacoes { get; set; } = new List<Embarcacoes>();
     }
 }

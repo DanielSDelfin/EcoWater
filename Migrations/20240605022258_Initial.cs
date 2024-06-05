@@ -86,17 +86,16 @@ namespace EcoWater.Migrations
                     Nome = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Tipo = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Bandeira = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Capacidade = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Ano_Fabricação = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Id_Proprietario = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    ProprietariosId_Proprietario = table.Column<int>(type: "NUMBER(10)", nullable: false)
+                    Capacidade = table.Column<double>(type: "BINARY_DOUBLE", nullable: false),
+                    Ano_Fabricação = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    Id_Proprietario = table.Column<int>(type: "NUMBER(10)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Embarcacoes", x => x.Id_Embarcacao);
                     table.ForeignKey(
-                        name: "FK_Embarcacoes_Proprietarios_ProprietariosId_Proprietario",
-                        column: x => x.ProprietariosId_Proprietario,
+                        name: "FK_Embarcacoes_Proprietarios_Id_Proprietario",
+                        column: x => x.Id_Proprietario,
                         principalTable: "Proprietarios",
                         principalColumn: "Id_Proprietario",
                         onDelete: ReferentialAction.Cascade);
@@ -133,9 +132,9 @@ namespace EcoWater.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Embarcacoes_ProprietariosId_Proprietario",
+                name: "IX_Embarcacoes_Id_Proprietario",
                 table: "Embarcacoes",
-                column: "ProprietariosId_Proprietario");
+                column: "Id_Proprietario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Monitoramentos_Id_Embarcacao",

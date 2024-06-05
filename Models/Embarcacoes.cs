@@ -18,10 +18,9 @@ namespace EcoWater.Models
         [Required]
         public int Ano_Fabricação { get; set; }
 
-        // Removido o atributo ForeignKey aqui, pois ele será usado na propriedade Proprietarios
-        public int? Id_Proprietario { get; set; } // Fazendo o Id_Proprietario opcional
-
-        [ForeignKey("Id_Proprietario")]
-        public virtual Proprietarios Proprietarios { get; set; } // Agora é virtual para suportar lazy loading
+        [ForeignKey("Proprietarios")]
+        public int Id_Proprietario { get; set; }
+        public Proprietarios? Proprietarios { get; set; } 
     }
+
 }

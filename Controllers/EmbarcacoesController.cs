@@ -22,7 +22,8 @@ namespace EcoWater.Controllers
         // GET: Embarcacoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Embarcacoes.ToListAsync());
+            var oracleDbContext = _context.Embarcacoes.Include(e => e.Proprietarios);
+            return View(await oracleDbContext.ToListAsync());
         }
 
         // GET: Embarcacoes/Details/5
@@ -34,6 +35,7 @@ namespace EcoWater.Controllers
             }
 
             var embarcacoes = await _context.Embarcacoes
+                .Include(e => e.Proprietarios)
                 .FirstOrDefaultAsync(m => m.Id_Embarcacao == id);
             if (embarcacoes == null)
             {
@@ -46,6 +48,7 @@ namespace EcoWater.Controllers
         // GET: Embarcacoes/Create
         public IActionResult Create()
         {
+            ViewData["Id_Proprietario"] = new SelectList(_context.Proprietarios, "Id_Proprietario", "Id_Proprietario");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace EcoWater.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Id_Proprietario"] = new SelectList(_context.Proprietarios, "Id_Proprietario", "Id_Proprietario", embarcacoes.Id_Proprietario);
             return View(embarcacoes);
         }
 
@@ -78,6 +82,7 @@ namespace EcoWater.Controllers
             {
                 return NotFound();
             }
+            ViewData["Id_Proprietario"] = new SelectList(_context.Proprietarios, "Id_Proprietario", "Id_Proprietario", embarcacoes.Id_Proprietario);
             return View(embarcacoes);
         }
 
@@ -113,6 +118,7 @@ namespace EcoWater.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Id_Proprietario"] = new SelectList(_context.Proprietarios, "Id_Proprietario", "Id_Proprietario", embarcacoes.Id_Proprietario);
             return View(embarcacoes);
         }
 
@@ -125,6 +131,7 @@ namespace EcoWater.Controllers
             }
 
             var embarcacoes = await _context.Embarcacoes
+                .Include(e => e.Proprietarios)
                 .FirstOrDefaultAsync(m => m.Id_Embarcacao == id);
             if (embarcacoes == null)
             {

@@ -29,17 +29,15 @@ namespace EcoWater.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Embarcacao"));
 
-                    b.Property<string>("Ano_Fabricação")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                    b.Property<int>("Ano_Fabricação")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("Bandeira")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("Capacidade")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                    b.Property<double>("Capacidade")
+                        .HasColumnType("BINARY_DOUBLE");
 
                     b.Property<int>("Id_Proprietario")
                         .HasColumnType("NUMBER(10)");
@@ -48,16 +46,13 @@ namespace EcoWater.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<int>("ProprietariosId_Proprietario")
-                        .HasColumnType("NUMBER(10)");
-
                     b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.HasKey("Id_Embarcacao");
 
-                    b.HasIndex("ProprietariosId_Proprietario");
+                    b.HasIndex("Id_Proprietario");
 
                     b.ToTable("Embarcacoes");
                 });
@@ -231,8 +226,8 @@ namespace EcoWater.Migrations
             modelBuilder.Entity("EcoWater.Models.Embarcacoes", b =>
                 {
                     b.HasOne("EcoWater.Models.Proprietarios", "Proprietarios")
-                        .WithMany()
-                        .HasForeignKey("ProprietariosId_Proprietario")
+                        .WithMany("Embarcacoes")
+                        .HasForeignKey("Id_Proprietario")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -256,6 +251,11 @@ namespace EcoWater.Migrations
                     b.Navigation("Embarcacoes");
 
                     b.Navigation("Sensores");
+                });
+
+            modelBuilder.Entity("EcoWater.Models.Proprietarios", b =>
+                {
+                    b.Navigation("Embarcacoes");
                 });
 #pragma warning restore 612, 618
         }
